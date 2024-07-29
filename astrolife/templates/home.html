@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section id="welcome" class="mb-5">
+    <div class="text-center">
+        <h1>AstroLife</h1>
+        <p class="lead">Welcome!</p>
+        <p>In AstroLife, you will be able to calculate, using the Drake Equation, the probabilities of finding habitable zones.</p>
+        <button class="btn btn-dark" onclick="window.location.href='/drake-equation'">Let's start!</button>
+    </div>
+</section>
+<section id="about" class="mt-5">
+    <div class="text-center">
+        <h2>About</h2>
+        <p>I decided to make this project to mix two of my passions: astronomy and coding. Whether you are a student in the field or just an enthusiast like me, I hope you enjoy it!</p>
+        <p>If you want to provide feedback, you can contact me on
+            <a href="https://www.linkedin.com/in/milenasaron/" target="_blank">LinkedIn</a>,
+            <a href="https://github.com/aronmilenait" target="_blank">Github</a>, or
+            <a href="mailto:aronmilena.it@gmail.com" target="_blank">Gmail</a>.
+        </p>
+    </div>
+</section>
+{% endblock %}
