@@ -1,122 +1,114 @@
 {% extends "base.html" %} {% block content %}
-<div class="container mt-5">
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      <div class="card shadow-lg">
-        <div class="card-header bg-primary text-white">
-          <h3 class="mb-0">Drake Equation Calculator</h3>
+<section id="drake" class="container mt-5">
+  <div class="card shadow-lg">
+    <div class="card-header bg-dark text-white text-center">
+      <h3 class="mb-0">Drake Equation Calculator</h3>
+    </div>
+    <div class="card-body">
+      <form method="POST">
+        {% if error %}
+        <div class="alert alert-danger" role="alert">{{ error }}</div>
+        {% endif %}
+        <div class="form-group mb-3">
+          <label for="R_star">R_star (Rate of star formation per year):</label>
+          <input
+            type="number"
+            step="any"
+            class="form-control"
+            id="R_star"
+            name="R_star"
+            required
+          />
         </div>
-        <div class="card-body">
-          <form method="POST">
-            {% if error %}
-            <div class="alert alert-danger mt-3" role="alert">{{ error }}</div>
-            {% endif %}
-            <div class="form-group mb-3">
-              <label for="R_star"
-                >R_star (Rate of star formation per year):</label
-              >
-              <input
-                type="number"
-                step="any"
-                class="form-control"
-                id="R_star"
-                name="R_star"
-                required
-              />
-            </div>
-            <div class="form-group mb-3">
-              <label for="f_p">f_p (Fraction of stars with planets):</label>
-              <input
-                type="number"
-                step="any"
-                class="form-control"
-                id="f_p"
-                name="f_p"
-                required
-              />
-            </div>
-            <div class="form-group mb-3">
-              <label for="n_e"
-                >n_e (Number of habitable planets per star):</label
-              >
-              <input
-                type="number"
-                step="any"
-                class="form-control"
-                id="n_e"
-                name="n_e"
-                required
-              />
-            </div>
-            <div class="form-group mb-3">
-              <label for="f_l"
-                >f_l (Fraction of habitable planets where life appears):</label
-              >
-              <input
-                type="number"
-                step="any"
-                class="form-control"
-                id="f_l"
-                name="f_l"
-                required
-              />
-            </div>
-            <div class="form-group mb-3">
-              <label for="f_i"
-                >f_i (Fraction of planets with intelligent life):</label
-              >
-              <input
-                type="number"
-                step="any"
-                class="form-control"
-                id="f_i"
-                name="f_i"
-                required
-              />
-            </div>
-            <div class="form-group mb-3">
-              <label for="f_c"
-                >f_c (Fraction of civilizations that can communicate):</label
-              >
-              <input
-                type="number"
-                step="any"
-                class="form-control"
-                id="f_c"
-                name="f_c"
-                required
-              />
-            </div>
-            <div class="form-group mb-3">
-              <label for="L"
-                >L (Length of time civilizations can communicate):</label
-              >
-              <input
-                type="number"
-                step="any"
-                class="form-control"
-                id="L"
-                name="L"
-                required
-              />
-            </div>
-            <button type="submit" class="btn btn-primary btn-lg btn-block">
-              Calculate
-            </button>
-          </form>
-          {% if N is not none %}
-          <div class="result mt-4">
-            <div class="alert alert-success" role="alert">
-              <h4 class="alert-heading">Result:</h4>
-              <p class="mb-0">
-                Number of Detectable Civilizations: <strong>{{ N }}</strong>
-              </p>
-            </div>
-          </div>
-          {% endif %}
+        <div class="form-group mb-3">
+          <label for="f_p">f_p (Fraction of stars with planets):</label>
+          <input
+            type="number"
+            step="any"
+            class="form-control"
+            id="f_p"
+            name="f_p"
+            required
+          />
+        </div>
+        <div class="form-group mb-3">
+          <label for="n_e">n_e (Number of habitable planets per star):</label>
+          <input
+            type="number"
+            step="any"
+            class="form-control"
+            id="n_e"
+            name="n_e"
+            required
+          />
+        </div>
+        <div class="form-group mb-3">
+          <label for="f_l"
+            >f_l (Fraction of habitable planets where life appears):</label
+          >
+          <input
+            type="number"
+            step="any"
+            class="form-control"
+            id="f_l"
+            name="f_l"
+            required
+          />
+        </div>
+        <div class="form-group mb-3">
+          <label for="f_i"
+            >f_i (Fraction of planets with intelligent life):</label
+          >
+          <input
+            type="number"
+            step="any"
+            class="form-control"
+            id="f_i"
+            name="f_i"
+            required
+          />
+        </div>
+        <div class="form-group mb-3">
+          <label for="f_c"
+            >f_c (Fraction of civilizations that can communicate):</label
+          >
+          <input
+            type="number"
+            step="any"
+            class="form-control"
+            id="f_c"
+            name="f_c"
+            required
+          />
+        </div>
+        <div class="form-group mb-3">
+          <label for="L"
+            >L (Length of time civilizations can communicate):</label
+          >
+          <input
+            type="number"
+            step="any"
+            class="form-control"
+            id="L"
+            name="L"
+            required
+          />
+        </div>
+        <div class="d-flex justify-content-center mt-3">
+          <button type="submit" class="btn btn-dark btn-lg">Calculate</button>
+        </div>
+      </form>
+      {% if N is not none %}
+      <div class="result mt-4">
+        <div class="alert alert-success" role="alert">
+          <h4 class="alert-heading">Result:</h4>
+          <p class="mb-0">
+            Number of Detectable Civilizations: <strong>{{ N }}</strong>
+          </p>
         </div>
       </div>
+      {% endif %}
     </div>
   </div>
-</div>
+</section>
 {% endblock %}
